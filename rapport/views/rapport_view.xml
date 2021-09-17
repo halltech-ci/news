@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="rapport_list_view">
+            <field name="name">rapport list</field>
+            <field name="model">aht_rapport</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="report_reference"/>
+                    <field name="title"/>
+                    <field name="utilisateur"/>
+                    <field name="societe"/>
+                    <field name="responsable"/>
+                    <field name="date_saisir"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="rapport_form_view">
+            <field name="name">rapport from</field>
+            <field name="model">aht_rapport</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_send_mail" type="object" string="Envoie de mail" class="oe_highlight"/>
+                        <field name="commande" string="Joindre un fichier"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="report_reference" readonly="1" invisible="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="title" string="Titre"/>
+                            <field name="utilisateur" string="Utilisateur"/>
+                            <field name="societe" string="Société"/>
+                        </group>
+                        <group>
+                            <field name="responsable" string="Résponsable"/>
+                            <field name="objet" string="Objet"/>
+                            <field name="date_saisir" string="Date"/>
+                        </group>
+                        <notebook>
+                            <page>
+                                <separator string="Note"/>
+                                <field name="note" string="Note"/>
+                                <separator string="Reste"/>
+                                <field name="reste_gerer" string="Reste à Gerer"/>
+                                <separator string="Contraintes"/>
+                                <field name="bloquante" string="Les elementrs Bloquants"/>
+                                <separator string="Date et Heure"/>
+                                <field name="date_now" string="La Date et Heure"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+        <record id="view_moduls_repport" model="ir.actions.act_window">
+            <field name="name">moduls_repport</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">aht_rapport</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Mon premier rapport avec Odoo!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="rapport_root"
+                  name="Rapport"
+                  sequence="10"/>
+
+        <menuitem id="rapport_conterendu_root"
+                  name="Rapport"
+                  parent="rapport_root"
+                  sequence="1"/>
+
+        <menuitem id="rapport_conterendu"
+                  name="Rapport"
+                  parent="rapport_conterendu_root"
+                  action="view_moduls_repport"
+                  sequence="1"/>
+    </data>
+</odoo>
+
+

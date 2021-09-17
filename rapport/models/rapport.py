@@ -1,6 +1,5 @@
 from odoo import models, fields, api, _
 
-
 class RapportRapport(models.Model):
     _name = 'aht_rapport'
     _description = 'Rapport'

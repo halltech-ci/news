@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+#from odoo import models, fields, api
 
 
-class hta_custom_report(models.Model):
-    _name = 'hta_custom_report.hta_custom_report'
-    _description = 'hta_custom_report.hta_custom_report'
+#class hta_custom_report(models.Model):
+    #_name = 'hta_custom_report.hta_custom_report'
+    #_description = 'hta_custom_report.hta_custom_report'
 
 #     name = fields.Char()
 #     value = fields.Integer()
